@@ -1,8 +1,8 @@
 # uiskills
 
-A curated collection of **85 Claude Code skills** for UI/design engineering
+A curated collection of **85 Claude Code skills** for UI/design engineering, plus the MCP servers and plugin setup that pair with them.
 
-Every skill is installed under `.claude/skills/` and works automatically in Claude Code (and other agents via the [`skills`](https://github.com/vercel-labs/skills) CLI). `skills-lock.json` pins every source repo and version.
+Every skill is installed under `.claude/skills/` and works automatically in Claude Code (and other agents via the [`skills`](https://github.com/vercel-labs/skills) CLI). `skills-lock.json` pins every source repo and version. `.mcp.json` wires up the shadcn, Chrome DevTools, and Magic MCP servers, and `.claude/settings.json` preloads Anthropic's frontend-design plugin.
 
 ## Installing / updating
 
@@ -14,10 +14,45 @@ npx skills add <github-repo> --skill <name>
 npx skills experimental_install
 ```
 
+## MCP servers
+
+`.mcp.json` wires up three servers. Claude Code loads them automatically when you open this repo (approve them on first use), and you can copy the file, or single entries, into any other project.
+
+- **[shadcn](https://ui.shadcn.com/docs/mcp)**: browse, search, and install components from any shadcn registry. Pairs with the `shadcn` skill below.
+- **[chrome-devtools](https://github.com/ChromeDevTools/chrome-devtools-mcp)**: drives a real Chrome instance for debugging, performance traces, screenshots, and network inspection.
+- **[magic](https://github.com/21st-dev/magic-mcp)** (21st.dev): generates polished UI components from natural language. Needs an API key from the [Magic console](https://21st.dev/magic/console), exported as `TWENTY_FIRST_API_KEY`.
+
+To add them to another project from the CLI instead:
+
+```bash
+claude mcp add shadcn -- npx shadcn@latest mcp
+claude mcp add chrome-devtools -- npx -y chrome-devtools-mcp@latest
+claude mcp add magic --env API_KEY=<your-key> -- npx -y @21st-dev/magic@latest
+```
+
+## Plugins
+
+`.claude/settings.json` preconfigures Anthropic's official plugin marketplace and enables [frontend-design](https://github.com/anthropics/claude-code/tree/main/plugins/frontend-design), which pushes generated UI toward distinctive, production-grade design instead of generic AI styling. Claude Code offers to set both up when you trust this folder.
+
+To install it in any other setup:
+
+```
+/plugin marketplace add anthropics/claude-code
+/plugin install frontend-design@claude-code-plugins
+```
+
+## Vercel Web Interface Guidelines
+
+Vercel's [Web Interface Guidelines](https://github.com/vercel-labs/web-interface-guidelines) ship here as the `web-design-guidelines` skill (from `vercel-labs/agent-skills`), so UI reviews in this repo already check against them. To also get the standalone `/web-interface-guidelines` command in Claude Code, Cursor, and other agents:
+
+```bash
+curl -fsSL https://vercel.com/design/guidelines/install | bash
+```
+
 ## Notes
 
 - Skills were installed with `--copy` (real files, committed to this repo) targeting Claude.
-- Skills run with full agent permissions — review before use.
+- Skills run with full agent permissions, so review before use.
 - `rams` (from `ui-skills.com`) is **not** included: its source repo `github.com/rams/rams-ai` returns 404.
 - A few site entries are facets of one skill (e.g. the 18 `pbakaus` entries all live inside `impeccable`; AccessLint's 5 map to `audit`/`diff`/`scan`), so the real installable count (85) is lower than the site's listing count.
 
