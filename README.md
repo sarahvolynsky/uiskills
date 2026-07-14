@@ -20,7 +20,7 @@ npx skills experimental_install
 
 - **[shadcn](https://ui.shadcn.com/docs/mcp)**: browse, search, and install components from any shadcn registry. Pairs with the `shadcn` skill below.
 - **[chrome-devtools](https://github.com/ChromeDevTools/chrome-devtools-mcp)**: drives a real Chrome instance for debugging, performance traces, screenshots, and network inspection.
-- **[magic](https://github.com/21st-dev/magic-mcp)** (21st.dev): generates polished UI components from natural language. Needs an API key from the [Magic console](https://21st.dev/magic/console), exported as `TWENTY_FIRST_API_KEY`.
+- **[magic](https://github.com/21st-dev/magic-mcp)** (21st.dev): generates polished UI components from natural language. Needs a 21st.dev API key (from the [console](https://21st.dev/magic/console) or https://21st.dev/mcp), exported as `API_KEY_21ST` — the same key the [CLI](#21stdev-cli) uses.
 
 To add them to another project from the CLI instead:
 
@@ -48,6 +48,34 @@ Vercel's [Web Interface Guidelines](https://github.com/vercel-labs/web-interface
 ```bash
 curl -fsSL https://vercel.com/design/guidelines/install | bash
 ```
+
+## 21st.dev CLI
+
+The [21st.dev CLI](https://www.npmjs.com/package/@21st-dev/cli) is the terminal companion to the Magic MCP above — same 21st.dev account, same API key. It searches the component/theme/template catalog, installs published components, and publishes your own.
+
+```bash
+npm i -g @21st-dev/cli
+21st login   # opens the browser once, saves a token locally
+```
+
+Then use it anywhere:
+
+```bash
+21st search "pricing table"          # search components, themes, and templates
+21st add shadcn/button               # install a published component by author/slug
+21st publish ./PinList.tsx --description "A pinned items list"
+21st edit pin-list --type component --visibility public
+21st delete pin-list --type component --yes
+21st logo react                      # brand/UI logo search (free, no login)
+```
+
+For CI and scripts, skip `21st login` and authenticate with the same key as the Magic MCP: set `API_KEY_21ST` (or `TWENTYFIRST_TOKEN`) in the environment, or pass `--api-key`:
+
+```bash
+21st search "pricing table" --api-key "$API_KEY_21ST" --json
+```
+
+Run `21st help` for the full surface (bookmarks, teams, `generate`/`iterate` AI sketches, profile boards). `21st init --client claude --write` will also merge 21st's hosted HTTP MCP into `.mcp.json` if you want catalog access from inside the agent, not just the terminal.
 
 ## Notes
 
