@@ -55,6 +55,12 @@
       "skillPath": "plugins/framework-migration/skills/angular-migration/SKILL.md",
       "computedHash": "ca92d5713fdc25121a329a4d9ee034f546d30889b9d132f6391deea6898d6fd7"
     },
+    "animejs": {
+      "source": "BowTiedSwan/animejs-skills",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "6d5fd991cdff8d4eb0f88e2136da0c4168396edb093af3b397cbc6128cdabdd4"
+    },
     "antfu": {
       "source": "antfu/skills",
       "sourceType": "github",
@@ -198,6 +204,12 @@
       "sourceType": "github",
       "skillPath": "plugins/reverse-engineering/skills/binary-analysis-patterns/SKILL.md",
       "computedHash": "91d2814dd806766b7e77b2c98de66c3753384c37810ec561f1cc55ce3264034f"
+    },
+    "bklit-ui": {
+      "source": "bklit/bklit-ui",
+      "sourceType": "github",
+      "skillPath": "skills/bklit-ui/SKILL.md",
+      "computedHash": "ace89f8b9a6d5d8f0367307f886cb9654065356db537df7b57b3d849aa503534"
     },
     "block-no-verify-hook": {
       "source": "wshobson/agents",

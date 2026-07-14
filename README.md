@@ -1,6 +1,6 @@
 # uiskills
 
-A curated collection of **85 Claude Code skills** for UI/design engineering, plus the MCP servers and plugin setup that pair with them.
+A curated collection of **87 Claude Code skills** for UI/design engineering, plus the MCP servers and plugin setup that pair with them.
 
 Every skill is installed under `.claude/skills/` and works automatically in Claude Code (and other agents via the [`skills`](https://github.com/vercel-labs/skills) CLI). `skills-lock.json` pins every source repo and version. `.mcp.json` wires up the shadcn, Chrome DevTools, and Magic MCP servers, and `.claude/settings.json` preloads Anthropic's frontend-design plugin.
 
@@ -54,16 +54,19 @@ curl -fsSL https://vercel.com/design/guidelines/install | bash
 - Skills were installed with `--copy` (real files, committed to this repo) targeting Claude.
 - Skills run with full agent permissions, so review before use.
 - `rams` (from `ui-skills.com`) is **not** included: its source repo `github.com/rams/rams-ai` returns 404.
-- A few site entries are facets of one skill (e.g. the 18 `pbakaus` entries all live inside `impeccable`; AccessLint's 5 map to `audit`/`diff`/`scan`), so the real installable count (85) is lower than the site's listing count.
+- A few site entries are facets of one skill (e.g. the 18 `pbakaus` entries all live inside `impeccable`; AccessLint's 5 map to `audit`/`diff`/`scan`), so the real installable count from the site (85) is lower than its listing count.
+- `animejs` (from `BowTiedSwan/animejs-skills`) and `bklit-ui` (from `bklit/bklit-ui`) were added on top of the original import.
 
-## Skills (85)
+## Skills (87)
 
 - **12-principles-of-animation** — Audit animation code against Disney's 12 principles adapted for web. Use when reviewing motion, implementing animations,
 - **agent-browser** — Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages, fil
+- **animejs** — Comprehensive skill for Anime.js v4 - a fast and flexible JavaScript animation library. This skill should be used when
 - **antfu** — Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects. Use when setting up new projects, c
 - **audit** — Find and fix WCAG 2.2 accessibility issues. Two modes — report (sweep a codebase or page, produce a prioritized writte
 - **baseline-ui** — Validates animation durations, enforces typography scale, checks component accessibility, and prevents layout anti-patte
 - **bencium-innovative-ux-designer** — Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to 
+- **bklit-ui** — Bklit UI charts and data visualization for any project using the @bklit shadcn registry. Install, compose, theme, and
 - **budge** — Use when making single-property CSS or Tailwind visual changes in Next.js App Router projects. Presents a floating contr
 - **canvas-design** — Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user 
 - **create-adaptable-composable** — Create a library-grade Vue composable that accepts maybe-reactive inputs (MaybeRef / MaybeRefOrGetter) so callers can pa
